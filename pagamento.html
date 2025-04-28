@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bougainvillea B&B - Pagamento Super Luxury</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #d4af7f;
+      --secondary: #f7e7ce;
+      --accent: #6f4e37;
+      --light: #fefaf6;
+      --dark: #2d2d2d;
+      --radius: 1.5rem;
+      --shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #fdf6ec, #fff8f2);
+      color: var(--dark);
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+    nav {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: var(--shadow);
+    }
+    .logo { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--accent); }
+    .nav-links { display: flex; gap: 2rem; }
+    .nav-links a { text-decoration: none; font-weight: 600; color: var(--dark); }
+    .nav-links a:hover { color: var(--primary); }
+    header {
+      background: linear-gradient(135deg, rgba(212,175,127,0.6), rgba(247,231,206,0.6)),
+      url('https://via.placeholder.com/1600x800/faf8f5/333?text=Bougainvillea+B%26B') center/cover no-repeat;
+      height: 70vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+      color: white;
+    }
+    header h1 { font-family: 'Playfair Display', serif; font-size: 3.5rem; }
+    header p { font-size: 1.5rem; margin-top: 1rem; }
+    main { max-width: 1100px; margin: auto; padding: 4rem 2rem; }
+    section { margin-bottom: 4rem; }
+    .card {
+      background: rgba(255,255,255,0.8);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255,215,170,0.5);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 2rem;
+      margin-top: 2rem;
+      transition: transform 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); }
+    h2, h3 { font-family: 'Playfair Display', serif; text-align: center; margin-bottom: 1rem; color: var(--accent); }
+    form label { font-weight: 600; margin-top: 1rem; display: block; }
+    form input, form select, form textarea {
+      width: 100%; padding: 1rem; margin-top: 0.5rem;
+      border: 2px solid #ddd; border-radius: var(--radius);
+      background: white; transition: border-color 0.3s;
+    }
+    form input:focus, form select:focus, form textarea:focus {
+      border-color: var(--primary); outline: none;
+    }
+    .buttons { display: flex; justify-content: center; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+    .btn {
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 1rem;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      color: var(--dark);
+    }
+    .loader { display: none; text-align: center; font-size: 1.5rem; padding: 2rem; color: var(--primary); }
+    footer {
+      background: linear-gradient(135deg, var(--secondary), #fff);
+      padding: 2rem;
+      text-align: center;
+      font-weight: bold;
+      color: var(--accent);
+      margin-top: 4rem;
+    }
+  </style>
+</head>
+
+<body>
+
+<nav>
+  <div class="logo">Bougainvillea B&B</div>
+  <div class="nav-links">
+    <a href="#riepilogo">Riepilogo</a>
+    <a href="prenota.html">Prenota</a>
+  </div>
+</nav>
+
+<header>
+  <h1>Conferma il tuo soggiorno</h1>
+  <p>Pagamento sicuro ed elegante</p>
+</header>
+
+<main>
+<section id="riepilogo">
+  <h2>Riepilogo Prenotazione</h2>
+  <div class="card" id="summary"></div>
+
+  <div class="card">
+    <h3>Prezzo Soggiorno</h3>
+    <p><strong>Prezzo a notte:</strong> <span id="price-per-night">€0</span></p>
+    <p><strong>Totale:</strong> <span id="total-price">€0</span></p>
+  </div>
+
+  <div id="loader" class="loader">💳 Pagamento in corso...</div>
+
+  <form id="payment-form" class="card">
+    <h3>Metodo di Pagamento</h3>
+    <select id="payment-method" required>
+      <option value="">-- Seleziona --</option>
+      <option value="card">💳 Carta di Credito</option>
+      <option value="paypal">🅿️ PayPal</option>
+      <option value="cash">💵 Contanti</option>
+    </select>
+
+    <div id="payment-extra"></div>
+
+    <div class="buttons">
+      <button type="button" onclick="location.href='prenota.html'" class="btn">Torna Indietro</button>
+      <button type="submit" class="btn">Conferma e Paga</button>
+    </div>
+  </form>
+
+  <div id="success-message" class="card" style="display:none;">
+    <h2 style="color: green;">✅ Prenotazione confermata!</h2>
+  </div>
+</section>
+</main>
+
+<footer>
+  © 2025 Bougainvillea B&B - Tutti i diritti riservati
+</footer>
+
+<script>
+// Popola il riepilogo prenotazione
+const summary = document.getElementById('summary');
+const fields = ['name', 'email', 'checkin', 'checkout', 'message'];
+function populateSummary() {
+  summary.innerHTML = fields.map(f => `<p><strong>${f.charAt(0).toUpperCase() + f.slice(1)}:</strong> ${localStorage.getItem(f) || 'N/A'}</p>`).join('');
+}
+
+populateSummary();
+
+// Prezzo calcolato
+const priceNight = 80;
+const checkin = new Date(localStorage.getItem('checkin'));
+const checkout = new Date(localStorage.getItem('checkout'));
+const days = Math.ceil((checkout - checkin) / (1000*60*60*24));
+document.getElementById('price-per-night').textContent = `€${priceNight}`;
+document.getElementById('total-price').textContent = `€${priceNight * (days > 0 ? days : 1)}`;
+
+// Gestione metodo pagamento
+const paymentMethod = document.getElementById('payment-method');
+const paymentExtra = document.getElementById('payment-extra');
+
+paymentMethod.addEventListener('change', (e) => {
+  paymentExtra.innerHTML = '';
+  if (e.target.value === 'card') {
+    paymentExtra.innerHTML = `
+      <label for="card-number">💳 Numero Carta</label>
+      <input id="card-number" type="text" maxlength="19" placeholder="1234 5678 9012 3456" required>
+
+      <label for="expiry-date">📅 Data di Scadenza</label>
+      <input id="expiry-date" type="text" maxlength="5" placeholder="MM/AA" required>
+
+      <label for="cvv">🔒 CVV</label>
+      <input id="cvv" type="text" maxlength="4" placeholder="123" required>
+    `;
+  } else if (e.target.value === 'paypal') {
+    paymentExtra.innerHTML = `<p style="margin-top:1rem;"><a href='https://www.paypal.com' target='_blank' style='color:var(--accent); font-weight:bold;'>Vai al pagamento PayPal ➡️</a></p>`;
+  } else if (e.target.value === 'cash') {
+    paymentExtra.innerHTML = `<p style="margin-top:1rem;">Pagherai in contanti all'arrivo.</p>`;
+  }
+});
+
+// Gestione invio modulo
+const form = document.getElementById('payment-form');
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+  
+  if (paymentMethod.value === 'card') {
+    const cardNumber = document.getElementById('card-number')?.value.replace(/\s+/g, '');
+    const expiry = document.getElementById('expiry-date')?.value;
+    const cvv = document.getElementById('cvv')?.value;
+    if (!cardNumber || cardNumber.length < 16 || !expiry || expiry.length < 5 || !cvv || cvv.length < 3) {
+      alert('Compila correttamente tutti i campi della carta.');
+      return;
+    }
+  }
+
+  document.getElementById('loader').style.display = 'block';
+  form.style.display = 'none';
+  setTimeout(() => {
+    document.getElementById('loader').style.display = 'none';
+    document.getElementById('success-message').style.display = 'block';
+  }, 2000);
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bougainvillea B&B - Prenota Ora</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+    <style>
+       :root {
+    --primary: #e5c79f;
+    --secondary: #f7e7ce;
+    --accent: #6f4e37;
+    --light: #fefaf6;
+    --dark: #2d2d2d;
+    --radius: 1.5rem;
+    --shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    --transition: all 0.3s ease;
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(135deg, #fdf6ec, #fff8f2);
+    color: var(--dark);
+    min-height: 100vh;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+nav {
+    position: sticky;
+    top: 0;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+.logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    color: var(--accent);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links a {
+    text-decoration: none;
+    font-weight: 600;
+    color: var(--dark);
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* Header */
+header {
+    position: relative;
+    background: linear-gradient(135deg, rgba(212, 175, 127, 0.6), rgba(247, 231, 206, 0.6)), 
+        url('https://via.placeholder.com/1600x700/f9f4ef/333?text=Bougainvillea+B%26B') center/cover no-repeat;
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    overflow: hidden;
+}
+
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.5rem;
+    text-shadow: 1px 1px 8px rgba(0, 0, 0, 0.2);
+    margin-bottom: 1rem;
+}
+
+header p {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+}
+
+/* Main Content */
+main {
+    max-width: 1100px;
+    margin: auto;
+    padding: 4rem 2rem;
+}
+
+/* Section */
+section {
+    background: rgba(255,255,255,0.8);
+    backdrop-filter: blur(10px);
+    border-radius: var(--radius);
+    padding: 2.5rem;
+    margin-bottom: 4rem;
+    box-shadow: var(--shadow);
+    transition: transform 0.3s ease;
+}
+
+section:hover {
+    transform: translateY(-5px);
+}
+
+section h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.6rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    color: var(--accent);
+}
+
+/* Form */
+form .form-group {
+    margin-bottom: 1.5rem;
+}
+
+form label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+form input,
+form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #ddd;
+    border-radius: var(--radius);
+    background: white;
+    transition: border-color 0.3s;
+}
+
+form input:focus,
+form textarea:focus {
+    border-color: var(--primary);
+    outline: none;
+}
+
+/* Person Box */
+.person-box {
+    background: var(--secondary);
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-bottom: 1.2rem;
+    position: relative;
+    box-shadow: var(--shadow);
+}
+
+/* Remove Button */
+.remove-person-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #d9534f;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 50px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.remove-person-btn:hover {
+    background: #c9302c;
+}
+
+/* Buttons */
+.btn {
+    background: linear-gradient(135deg, var(--primary), var(--secondary));
+    color: var(--dark);
+    padding: 0.8rem 2rem;
+    border: none;
+    border-radius: 50px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.btn:hover {
+    background: linear-gradient(135deg, var(--secondary), var(--primary));
+    transform: translateY(-2px);
+    color: var(--accent);
+}
+
+/* Preview */
+.preview {
+    background: var(--secondary);
+    padding: 1rem;
+    border-radius: var(--radius);
+    margin-top: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.preview ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.preview li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 1.1rem;
+}
+
+/* Footer */
+footer {
+    background: linear-gradient(135deg, var(--secondary), #fff);
+    padding: 2rem;
+    text-align: center;
+    font-size: 1rem;
+    color: var(--accent);
+    margin-top: 4rem;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-30px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    nav {
+        padding: 1rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    header h1 {
+        font-size: 2.6rem;
+    }
+
+    header p {
+        font-size: 1.2rem;
+    }
+
+    section h2 {
+        font-size: 2rem;
+    }
+}
+
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="overlay"></div>
+        <div class="header-content">
+            <h1>Bougainvillea B&B</h1>
+            <p>Il tuo angolo di paradiso</p>
+        </div>
+    </header>
+
+
+    <nav>
+        <div class="logo">Bougainvillea</div>
+        <div class="nav-links">
+            <a href="#prenota">Prenota</a>
+            <a href="#contatti">Contatti</a>
+        </div>
+    </nav>
+
+    <main>
+        <section id="prenota">
+            <h2>Prenota Ora</h2>
+            <form id="booking-form">
+                <div class="form-group">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkin">Data di Check-in</label>
+                    <input type="date" id="checkin" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout">Data di Check-out</label>
+                    <input type="date" id="checkout" required>
+                </div>
+
+                <button type="button" class="btn" id="add-person">+ Aggiungi Persona</button>
+                <div id="people-container"></div>
+
+                <div class="form-group">
+                    <label for="message">Messaggio</label>
+                    <textarea id="message" rows="4"></textarea>
+                </div>
+
+                <div style="text-align:center;">
+                    <button type="submit" class="btn">Procedi al Pagamento</button>
+                </div>
+            </form>
+        </section>
+
+        <section class="preview">
+            <h2>Anteprima Ospiti</h2>
+            <ul id="preview-list"></ul>
+        </section>
+    </main>
+
+    <footer id="contatti">
+        <p>© 2025 Bougainvillea B&B - Tutti i diritti riservati</p>
+    </footer>
+
+    <script>
+        let personCounter = 0;
+        const peopleContainer = document.getElementById('people-container');
+        const previewList = document.getElementById('preview-list');
+
+        function updatePreview() {
+            previewList.innerHTML = '';
+            document.querySelectorAll('.person-box').forEach(box => {
+                const firstName = box.querySelector('.first-name').value;
+                const lastName = box.querySelector('.last-name').value;
+                const birthDate = box.querySelector('.birth-date').value;
+                if (firstName && lastName && birthDate) {
+                    const li = document.createElement('li');
+                    li.textContent = `${firstName} ${lastName}, nato il ${birthDate}`;
+                    previewList.appendChild(li);
+                }
+            });
+        }
+
+        function addPerson() {
+            const div = document.createElement('div');
+            div.className = 'person-box';
+            div.innerHTML = `
+    <input type="text" class="first-name" placeholder="Nome" required>
+    <input type="text" class="last-name" placeholder="Cognome" required>
+    <input type="date" class="birth-date" required>
+    <button type="button" class="remove-person-btn" onclick="this.parentElement.remove(); updatePreview();">&times;</button>
+  `;
+            peopleContainer.appendChild(div);
+            div.querySelectorAll('input').forEach(input => input.addEventListener('input', updatePreview));
+            updatePreview();
+        }
+
+
+        // Event Listeners
+
+        addPersonBtn = document.getElementById('add-person');
+        addPersonBtn.addEventListener('click', addPerson);
+
+        const bookingForm = document.getElementById('booking-form');
+        bookingForm.addEventListener('submit', e => {
+            e.preventDefault();
+            alert('Prenotazione salvata! Ora verrai indirizzato al pagamento.');
+            window.location.href = 'pagamento.html';
+        });
+    </script>
+
+</body>
+
+</html>
