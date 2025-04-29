@@ -271,6 +271,116 @@
         margin-left: 20px;
       }
     }
+
+    .hero-header {
+      background: linear-gradient(rgba(229, 199, 159, 0.75),
+          rgba(247, 231, 206, 0.85)),
+        url('bou.png') no-repeat center top;
+      background-size: cover;
+      height: 85vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      /* spinge il contenuto più in alto */
+      flex-direction: column;
+      text-align: center;
+      color: var(--dark);
+      position: relative;
+      padding: 8vh 2rem 0;
+      overflow: hidden;
+      animation: fadeSlideIn 2s ease forwards;
+    }
+
+    @keyframes fadeSlideIn {
+      0% {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-header {
+  position: relative;
+  height: 100vh;
+  background: url('bou.png') no-repeat center top;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--dark);
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero-header .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    rgba(229, 199, 159, 0.65),
+    rgba(247, 231, 206, 0.85)
+  );
+  z-index: 1;
+}
+
+.hero-header .hero-content {
+  position: relative;
+  z-index: 2;
+  animation: fadeSlideUp 1.5s ease forwards;
+  padding: 2rem;
+}
+
+.hero-header h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  margin-bottom: 1rem;
+  animation: fadeSlideUp 1.5s ease forwards;
+}
+
+.hero-header p {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  animation: fadeSlideUp 1.7s ease forwards;
+}
+
+.hero-header .btn-primary {
+  animation: fadeSlideUp 2s ease forwards;
+}
+
+.wave {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 120px;
+  z-index: 2;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .hero-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .hero-header p {
+    font-size: 1.1rem;
+  }
+}
+
   </style>
 </head>
 
@@ -281,7 +391,7 @@
     <div class="menu-toggle" onclick="toggleMenu()">
       <i class="fas fa-bars"></i>
     </div>
-    
+
     <div class="nav-links" id="navLinks">
       <a href="#servizi">Servizi</a>
       <a href="#galleria">Galleria</a>
@@ -292,11 +402,57 @@
 
 </body>
 
-<header>
+
+
+<header class="hero-header">
+  <div class="overlay"></div>
+  <div class="hero-content">
+    <h1>Benvenuti al Bougainvillea B&B</h1>
+    <p>Eleganza Mediterranea e Ospitalità senza Tempo</p>
+    <a href="prenota.html" class="btn-primary">Prenota Ora</a>
+  </div>
+  <svg class="wave" viewBox="0 0 1440 150" preserveAspectRatio="none">
+    <path d="M0,100 C480,200 960,0 1440,100 L1440,150 L0,150 Z" fill="var(--light)"></path>
+  </svg>
+</header>
+
+
+
+<!--<header style="
+  background: linear-gradient(
+    rgba(229, 199, 159, 0.75),
+    rgba(247, 231, 206, 0.85)
+  ), url('bou.png') no-repeat center top;
+  background-size: cover;
+  height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  color: var(--dark);
+  position: relative;
+  overflow: hidden;
+  animation: fadeIn 2s ease;
+">
   <h1>Benvenuti al Bougainvillea B&B</h1>
   <p>Eleganza Mediterranea e Ospitalità senza Tempo</p>
   <a href="prenota.html" class="btn-primary">Prenota Ora</a>
-</header>
+</header>-->
+
+
+<!--<header style="background: url('bou.png') no-repeat center top; background-size: cover; padding: 60px 20px; background-color: #e5c79f; rgb(255, 255, 255);">
+  <h1>Benvenuti al Bougainvillea B&B</h1>
+  <p>Eleganza Mediterranea e Ospitalità senza Tempo</p>
+  <a href="prenota.html" class="btn-primary">Prenota Ora</a>
+</header>-->
+
+
+<!--<header>
+  <h1>Benvenuti al Bougainvillea B&B</h1>
+  <p>Eleganza Mediterranea e Ospitalità senza Tempo</p>
+  <a href="prenota.html" class="btn-primary">Prenota Ora</a>
+</header>-->
 
 <section id="servizi">
   <h2>Servizi Esclusivi</h2>
