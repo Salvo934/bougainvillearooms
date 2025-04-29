@@ -11,11 +11,10 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;600;700&display=swap"
     rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  
+
 
 
   <style>
-
     :root {
       --primary: #e5c79f;
       --secondary: #f7e7ce;
@@ -240,40 +239,45 @@
     }
 
     .petal {
-  position: fixed;
-  top: -50px;
-  width: 14px;
-  height: 22px;
-  background: radial-gradient(circle at 30% 30%, #ee8d9d, #ff69b4); /* sfumatura rosa */
-  opacity: 0.6;
-  border-radius: 70% 100% 70% 100%;
-  transform: rotate(45deg);
-  animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
-  z-index: -1;
-  pointer-events: none;
-  aspect-ratio: 2/3;
-}
-@keyframes fall {
-  to {
-    transform: translateY(110vh) rotate(360deg);
-  }
-}
-@keyframes sway {
-  0%, 100% {
-    margin-left: 0px;
-  }
-  50% {
-    margin-left: 20px;
-  }
-}
+      position: fixed;
+      top: -50px;
+      width: 14px;
+      height: 22px;
+      background: radial-gradient(circle at 30% 30%, #ee8d9d, #ff69b4);
+      /* sfumatura rosa */
+      opacity: 0.6;
+      border-radius: 70% 100% 70% 100%;
+      transform: rotate(45deg);
+      animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
+      z-index: -1;
+      pointer-events: none;
+      aspect-ratio: 2/3;
+    }
 
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+
+    @keyframes sway {
+
+      0%,
+      100% {
+        margin-left: 0px;
+      }
+
+      50% {
+        margin-left: 20px;
+      }
+    }
   </style>
 </head>
 
 <body>
-  
+
   <nav>
-    <div class="logo">🌺Bougainvillea B&B</div>
+    <div class="logo">Bougainvillea B&B</div>
     <div class="menu-toggle" onclick="toggleMenu()">
       <i class="fas fa-bars"></i>
     </div>
