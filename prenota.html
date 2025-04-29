@@ -638,6 +638,91 @@
                 margin-left: 20px;
             }
         }
+
+        .nav-toggle {
+    display: none;
+    background: none;
+    font-size: 2rem;
+    border: none;
+    color: var(--accent);
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    .nav-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        background: white;
+        position: absolute;
+        top: 60px;
+        right: 10px;
+        width: 200px;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links a {
+        padding: 1rem;
+        border-bottom: 1px solid #eee;
+    }
+}
+
+form .form-group {
+    margin-bottom: 1.2rem;
+}
+
+form label {
+    font-size: 0.95rem;
+}
+
+form input,
+form textarea {
+    padding: 0.8rem;
+    font-size: 1rem;
+}
+
+.guest-entry {
+    padding: 1rem;
+}
+
+.remove-btn {
+    top: 0.2rem;
+    right: 0.2rem;
+    padding: 0.3rem 0.5rem;
+}
+
+@media (max-width: 480px) {
+    .calendar-grid {
+        grid-template-columns: repeat(4, 1fr); /* meglio per piccoli schermi */
+    }
+
+    .calendar-day {
+        padding: 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .intestazione {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    footer {
+        font-size: 0.9rem;
+        line-height: 1.4;
+        padding: 1rem;
+    }
+}
+
+
     </style>
 </head>
 
@@ -661,6 +746,9 @@
 </header>
 
 <nav>
+    <!-- In NAV -->
+<button id="menu-toggle" class="nav-toggle">☰</button>
+
     <div class="logo">
         <a href="index.html">🌺 Bougainvillea B&B</a>
     </div>
@@ -1010,6 +1098,12 @@
         document.body.appendChild(petal);
     }
 </script>
+<script>
+document.getElementById('menu-toggle').addEventListener('click', () => {
+    document.querySelector('.nav-links').classList.toggle('active');
+});
+</script>
+
 
 
 </body>
