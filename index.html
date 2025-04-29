@@ -273,23 +273,21 @@
     }
 
     .hero-header {
-      background: linear-gradient(rgba(229, 199, 159, 0.75),
-          rgba(247, 231, 206, 0.85)),
-        url('bou.png') no-repeat center top;
-      background-size: cover;
-      height: 85vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      /* spinge il contenuto più in alto */
-      flex-direction: column;
-      text-align: center;
-      color: var(--dark);
-      position: relative;
-      padding: 8vh 2rem 0;
-      overflow: hidden;
-      animation: fadeSlideIn 2s ease forwards;
-    }
+  position: relative;
+  height: 100vh;
+  background: url('bou.png') no-repeat center top;
+  background-size: cover;
+  background-position: top center;
+  display: flex;
+  align-items: center; /* << Cambiato: adesso il contenuto si centra verticalmente */
+  justify-content: center;
+  flex-direction: column;
+  color: var(--dark);
+  text-align: center;
+  overflow: hidden;
+  padding: 0 2rem; /* << Solo padding laterale, non più padding-top */
+}
+
 
     @keyframes fadeSlideIn {
       0% {
@@ -308,79 +306,83 @@
   height: 100vh;
   background: url('bou.png') no-repeat center top;
   background-size: cover;
+  background-position: top center;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: center;        /* ⬅️ Centra verticalmente */
+  justify-content: center;    /* ⬅️ Centra orizzontalmente */
+  flex-direction: column;     /* ⬅️ Stack verticale */
   color: var(--dark);
   text-align: center;
   overflow: hidden;
+  padding: 0 2rem;            /* ⬅️ Solo padding laterale */
 }
 
-.hero-header .overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    rgba(229, 199, 159, 0.65),
-    rgba(247, 231, 206, 0.85)
-  );
-  z-index: 1;
-}
 
-.hero-header .hero-content {
-  position: relative;
-  z-index: 2;
-  animation: fadeSlideUp 1.5s ease forwards;
-  padding: 2rem;
-}
 
-.hero-header h1 {
-  font-family: 'Playfair Display', serif;
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  animation: fadeSlideUp 1.5s ease forwards;
-}
 
-.hero-header p {
-  font-size: 1.4rem;
-  margin-bottom: 2rem;
-  animation: fadeSlideUp 1.7s ease forwards;
-}
+    .hero-header .overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(229, 199, 159, 0.65),
+          rgba(247, 231, 206, 0.85));
+      z-index: 1;
+    }
 
-.hero-header .btn-primary {
-  animation: fadeSlideUp 2s ease forwards;
-}
+    .hero-header .hero-content {
+      position: relative;
+      z-index: 2;
+      animation: fadeSlideUp 1.5s ease forwards;
+      padding: 2rem;
+    }
 
-.wave {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 120px;
-  z-index: 2;
-}
+    .hero-header h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-bottom: 1rem;
+      animation: fadeSlideUp 1.5s ease forwards;
+    }
 
-@keyframes fadeSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(40px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    .hero-header p {
+      font-size: 1.4rem;
+      margin-bottom: 2rem;
+      animation: fadeSlideUp 1.7s ease forwards;
+    }
 
-/* Responsive adjustments */
-@media (max-width: 768px) {
-  .hero-header h1 {
-    font-size: 2.2rem;
-  }
+    .hero-header .btn-primary {
+      animation: fadeSlideUp 2s ease forwards;
+    }
 
-  .hero-header p {
-    font-size: 1.1rem;
-  }
-}
+    .wave {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      z-index: 2;
+    }
 
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .hero-header h1 {
+        font-size: 2.2rem;
+      }
+
+      .hero-header p {
+        font-size: 1.1rem;
+      }
+    }
   </style>
 </head>
 
@@ -401,6 +403,9 @@
   </nav>
 
 </body>
+
+
+
 
 
 
@@ -495,6 +500,7 @@
     document.body.appendChild(petal);
   }
 </script>
+
 <script>
   // Crea più petali con posizione orizzontale casuale
   const numberOfPetals = 20;

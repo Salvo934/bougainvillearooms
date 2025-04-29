@@ -98,6 +98,40 @@
       color: var(--accent);
       margin-top: 4rem;
     }
+
+    .petal {
+      position: fixed;
+      top: -50px;
+      width: 14px;
+      height: 22px;
+      background: radial-gradient(circle at 30% 30%, #ee8d9d, #ff69b4);
+      /* sfumatura rosa */
+      opacity: 0.6;
+      border-radius: 70% 100% 70% 100%;
+      transform: rotate(45deg);
+      animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
+      z-index: -1;
+      pointer-events: none;
+      aspect-ratio: 2/3;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
+
+    @keyframes sway {
+
+      0%,
+      100% {
+        margin-left: 0px;
+      }
+
+      50% {
+        margin-left: 20px;
+      }
+    }
   </style>
 </head>
 
@@ -221,6 +255,46 @@ form.addEventListener('submit', function(e) {
   }, 2000);
 });
 </script>
+
+<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+  }
+  for (let i = 0; i < 20; i++) {
+    const petal = document.createElement('div');
+    petal.classList.add('petal');
+    petal.style.left = `${Math.random() * 100}vw`;
+    petal.style.background = `hsl(${Math.random() * 20 + 340}, 70%, 80%)`;
+    petal.style.width = `${10 + Math.random() * 15}px`;
+    petal.style.height = `${10 + Math.random() * 15}px`;
+    petal.style.animationDuration = `${5 + Math.random() * 7}s`;
+    petal.style.animationDelay = `${Math.random() * 5}s`;
+    document.body.appendChild(petal);
+  }
+</script>
+
+
+<script>
+  // Crea più petali con posizione orizzontale casuale
+  const numberOfPetals = 20;
+
+  for (let i = 0; i < numberOfPetals; i++) {
+    const petal = document.createElement("div");
+    petal.classList.add("petal");
+
+    // Posizione orizzontale random
+    petal.style.left = Math.random() * 100 + "vw";
+
+    // Ritardo casuale per l'animazione
+    petal.style.animationDelay = Math.random() * 10 + "s";
+
+    // Variazione leggera della durata
+    petal.style.animationDuration = (8 + Math.random() * 5) + "s";
+
+    document.body.appendChild(petal);
+  }
+</script>
+
 
 </body>
 </html>
