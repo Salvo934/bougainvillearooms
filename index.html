@@ -238,21 +238,29 @@
   top: -50px;
   width: 14px;
   height: 22px;
-  background: rgb(247, 132, 151);
-  opacity: 0.5;
-  border-radius: 60% 100% 60% 100%;
-  transform: rotate(45deg); /* inclinazione per effetto petalo */
-  animation: fall 10s linear infinite;
+  background: radial-gradient(circle at 30% 30%, #ee8d9d, #ff69b4); /* sfumatura rosa */
+  opacity: 0.6;
+  border-radius: 70% 100% 70% 100%;
+  transform: rotate(45deg);
+  animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
   z-index: -1;
   pointer-events: none;
+  aspect-ratio: 2/3;
+}
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(360deg);
+  }
+}
+@keyframes sway {
+  0%, 100% {
+    margin-left: 0px;
+  }
+  50% {
+    margin-left: 20px;
+  }
 }
 
-
-    @keyframes fall {
-      to {
-        transform: translateY(110vh) rotate(360deg);
-      }
-    }
   </style>
 </head>
 
