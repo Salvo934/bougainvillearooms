@@ -208,6 +208,29 @@
         font-size: 2.5rem;
       }
     }
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      background: #fffafc; /* sfondo chiaro */
+    }
+
+    .petal {
+            position: fixed;
+            top: -50px;
+            width: 20px;
+            height: 20px;
+            background: pink;
+            opacity: 0.7;
+            border-radius: 50%;
+            animation: fall 10s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
   </style>
 </head>
 
@@ -224,6 +247,8 @@
       <a href="prenota.html">Prenota</a>
     </div>
   </nav>
+ 
+</body>
 
   <header>
     <h1>Benvenuti al Bougainvillea B&B</h1>
@@ -252,14 +277,27 @@
   </section>
 
   <footer>
-    <p>&copy; 2025 Bougainvillea B&B | Tutti i diritti riservati</p>
+    <p>&copy; 2025 Bougainvillea B&B | Tutti i diritti riservati | Made by Salvatore Bonavita</p>
   </footer>
 
   <script>
     function toggleMenu() {
       document.getElementById('navLinks').classList.toggle('active');
     }
+    for (let i = 0; i < 20; i++) {
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        petal.style.left = `${Math.random() * 100}vw`;
+        petal.style.background = `hsl(${Math.random() * 20 + 340}, 70%, 80%)`;
+        petal.style.width = `${10 + Math.random() * 15}px`;
+        petal.style.height = `${10 + Math.random() * 15}px`;
+        petal.style.animationDuration = `${5 + Math.random() * 7}s`;
+        petal.style.animationDelay = `${Math.random() * 5}s`;
+        document.body.appendChild(petal);
+    }
   </script>
+    
+
 </body>
 
 </html>
