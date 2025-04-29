@@ -99,13 +99,32 @@
       margin-top: 4rem;
     }
 
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    .summary-item {
+      padding: 1rem;
+      background-color: white;
+      border-radius: 1rem;
+      box-shadow: var(--shadow);
+    }
+    .summary-item .label {
+      font-weight: 600;
+      color: var(--accent);
+    }
+    .summary-item .value {
+      font-size: 1rem;
+      color: var(--dark);
+    }
+
     .petal {
       position: fixed;
       top: -50px;
       width: 14px;
       height: 22px;
       background: radial-gradient(circle at 30% 30%, #ee8d9d, #ff69b4);
-      /* sfumatura rosa */
       opacity: 0.6;
       border-radius: 70% 100% 70% 100%;
       transform: rotate(45deg);
@@ -122,91 +141,102 @@
     }
 
     @keyframes sway {
-
-      0%,
-      100% {
-        margin-left: 0px;
-      }
-
-      50% {
-        margin-left: 20px;
-      }
+      0%, 100% { margin-left: 0px; }
+      50% { margin-left: 20px; }
     }
   </style>
 </head>
-
 <body>
-
-<nav>
-  <div class="logo">Bougainvillea B&B</div>
-  <div class="nav-links">
-    <a href="#riepilogo">Riepilogo</a>
-    <a href="prenota.html">Prenota</a>
-  </div>
-</nav>
-
-<header>
-  <h1>Conferma il tuo soggiorno</h1>
-  <p>Pagamento sicuro ed elegante</p>
-</header>
-
-<main>
-<section id="riepilogo">
-  <h2>Riepilogo Prenotazione</h2>
-  <div class="card" id="summary"></div>
-
-  <div class="card">
-    <h3>Prezzo Soggiorno</h3>
-    <p><strong>Prezzo a notte:</strong> <span id="price-per-night">€0</span></p>
-    <p><strong>Totale:</strong> <span id="total-price">€0</span></p>
-  </div>
-
-  <div id="loader" class="loader">💳 Pagamento in corso...</div>
-
-  <form id="payment-form" class="card">
-    <h3>Metodo di Pagamento</h3>
-    <select id="payment-method" required>
-      <option value="">-- Seleziona --</option>
-      <option value="card">💳 Carta di Credito</option>
-      <option value="paypal">🅿️ PayPal</option>
-      <option value="cash">💵 Contanti</option>
-    </select>
-
-    <div id="payment-extra"></div>
-
-    <div class="buttons">
-      <button type="button" onclick="location.href='prenota.html'" class="btn">Torna Indietro</button>
-      <button type="submit" class="btn">Conferma e Paga</button>
+  <nav>
+    <div class="logo">Bougainvillea B&B</div>
+    <div class="nav-links">
+      <a href="#riepilogo">Riepilogo</a>
+      <a href="prenota.html">Prenota</a>
     </div>
-  </form>
+  </nav>
+  <header>
+    <h1>Conferma il tuo soggiorno</h1>
+    <p>Pagamento sicuro ed elegante</p>
+  </header>
+  <main>
+    <section id="riepilogo">
+      <h2>📝 Riepilogo Prenotazione</h2>
+      <div class="card summary-grid">
+        <div class="summary-item">
+          <span class="label">👤 Nome:</span>
+          <span id="summary-name" class="value">N/A</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">📧 Email:</span>
+          <span id="summary-email" class="value">N/A</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">📅 Check-in:</span>
+          <span id="summary-checkin" class="value">N/A</span>
+        </div>
+        <div class="summary-item">
+          <span class="label">📅 Check-out:</span>
+          <span id="summary-checkout" class="value">N/A</span>
+        </div>
+        <div class="summary-item" style="grid-column: span 2;">
+          <span class="label">📝 Messaggio:</span>
+          <span id="summary-message" class="value">N/A</span>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3>Prezzo Soggiorno</h3>
+        <p><strong>Prezzo per persona per notte:</strong> <span id="price-per-night">€0</span></p>
+        <p><strong>Numero di persone:</strong> <span id="number-of-guests">0</span></p>
+        <p><strong>Numero di notti:</strong> <span id="number-of-nights">0</span></p>
+        <p><strong>Totale:</strong> <span id="total-price">€0</span></p>
+      </div>
+      
+    
+    
+      <div id="loader" class="loader">💳 Pagamento in corso...</div>
+      <form id="payment-form" class="card">
+        <h3>Metodo di Pagamento</h3>
+        <select id="payment-method" required>
+          <option value="">-- Seleziona --</option>
+          <option value="card">💳 Carta di Credito</option>
+          <option value="paypal">🅿️ PayPal</option>
+          <option value="cash">💵 Contanti</option>
+        </select>
+        <div id="payment-extra"></div>
+        <div class="buttons">
+          <button type="button" onclick="location.href='prenota.html'" class="btn">Torna Indietro</button>
+          <button type="submit" class="btn">Conferma e Paga</button>
+        </div>
+      </form>
+      <div id="success-message" class="card" style="display:none;">
+        <h2 style="color: green;">✅ Prenotazione confermata!</h2>
+      </div>
+    </section>
+  </main>
+  <footer>
+    © 2025 Bougainvillea B&B - Tutti i diritti riservati
+  </footer>
+  <script>
+    function populateSummary() {
+      document.getElementById('summary-name').textContent = localStorage.getItem('name') || 'N/A';
+      document.getElementById('summary-email').textContent = localStorage.getItem('email') || 'N/A';
+      document.getElementById('summary-checkin').textContent = localStorage.getItem('checkin') || 'N/A';
+      document.getElementById('summary-checkout').textContent = localStorage.getItem('checkout') || 'N/A';
+      document.getElementById('summary-message').textContent = localStorage.getItem('message') || 'N/A';
+    }
+    populateSummary();
+    // Prezzo calcolato
+    const pricePerPersonPerNight = 80;
+const checkinDate = new Date(localStorage.getItem('checkin'));
+const checkoutDate = new Date(localStorage.getItem('checkout'));
+const guests = parseInt(localStorage.getItem('guests') || "1", 10);
+const numberOfNights = Math.max(1, Math.ceil((checkoutDate - checkinDate) / (1000 * 60 * 60 * 24)));
 
-  <div id="success-message" class="card" style="display:none;">
-    <h2 style="color: green;">✅ Prenotazione confermata!</h2>
-  </div>
-</section>
-</main>
-
-<footer>
-  © 2025 Bougainvillea B&B - Tutti i diritti riservati
-</footer>
-
-<script>
-// Popola il riepilogo prenotazione
-const summary = document.getElementById('summary');
-const fields = ['name', 'email', 'checkin', 'checkout', 'message'];
-function populateSummary() {
-  summary.innerHTML = fields.map(f => `<p><strong>${f.charAt(0).toUpperCase() + f.slice(1)}:</strong> ${localStorage.getItem(f) || 'N/A'}</p>`).join('');
-}
-
-populateSummary();
-
-// Prezzo calcolato
-const priceNight = 80;
-const checkin = new Date(localStorage.getItem('checkin'));
-const checkout = new Date(localStorage.getItem('checkout'));
-const days = Math.ceil((checkout - checkin) / (1000*60*60*24));
-document.getElementById('price-per-night').textContent = `€${priceNight}`;
-document.getElementById('total-price').textContent = `€${priceNight * (days > 0 ? days : 1)}`;
+document.getElementById('price-per-night').textContent = `€${pricePerPersonPerNight}`;
+document.getElementById('number-of-guests').textContent = guests;
+document.getElementById('number-of-nights').textContent = numberOfNights;
+document.getElementById('total-price').textContent = `€${pricePerPersonPerNight * guests * numberOfNights}`;
 
 // Gestione metodo pagamento
 const paymentMethod = document.getElementById('payment-method');
@@ -295,6 +325,10 @@ form.addEventListener('submit', function(e) {
   }
 </script>
 
-
+<script>
+if (!localStorage.getItem('name')) {
+  window.location.href = 'prenota.html';
+}
+  </script>
 </body>
 </html>

@@ -2,16 +2,20 @@
 <html lang="it">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bougainvillea B&B - Prenota Ora</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Playfair+Display:wght@700&display=swap"
-        rel="stylesheet">
-       
+
+    <head>
+        <meta charset="UTF-8">
+        <title>Bougainvillea B&B - Prenotazione</title>
+        <link rel="stylesheet" href="stile.css">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/it.js"></script>
+    </head>
+
 
 
     <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 
@@ -109,22 +113,23 @@
 
         main {
             max-width: 1100px;
-            margin: auto;
+            margin: 0 auto;
             padding: 4rem 2rem;
         }
 
         section {
-            background: rgba(255, 255, 255, 0.8);
-            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
             border-radius: var(--radius);
             padding: 2.5rem;
             margin-bottom: 4rem;
             box-shadow: var(--shadow);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         section:hover {
             transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.12);
         }
 
         section h2 {
@@ -136,30 +141,60 @@
         }
 
         form .form-group {
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.75rem;
         }
 
         form label {
             font-weight: 600;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.6rem;
             display: block;
+            color: #333;
         }
 
         form input,
         form textarea {
             width: 100%;
-            padding: 1rem;
+            padding: 1rem 1.2rem;
             border: 2px solid #ddd;
             border-radius: var(--radius);
-            background: white;
-            transition: border-color 0.3s;
+            background-color: #fff;
+            transition: border-color 0.3s, box-shadow 0.3s;
+            font-size: 1rem;
+            resize: vertical;
         }
 
         form input:focus,
         form textarea:focus {
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(100, 100, 255, 0.2);
             outline: none;
         }
+
+        form input:focus-visible,
+        form textarea:focus-visible {
+            outline: none;
+        }
+
+        @media (max-width: 768px) {
+            main {
+                padding: 3rem 1.5rem;
+            }
+
+            section {
+                padding: 2rem;
+            }
+
+            section h2 {
+                font-size: 2.2rem;
+            }
+
+            form input,
+            form textarea {
+                font-size: 0.95rem;
+                padding: 0.9rem 1rem;
+            }
+        }
+
 
         .person-box {
             background: var(--secondary);
@@ -257,96 +292,352 @@
         }
 
         .flatpickr-calendar {
-    font-family: 'Poppins', sans-serif;
-    background: var(--light);
-    border-radius: var(--radius);
-    box-shadow: var(--shadow);
-    overflow: hidden;
-    border: none;
-}
+            font-family: 'Poppins', sans-serif;
+            background: var(--light);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: none;
+        }
 
-.flatpickr-months {
-    background: var(--primary);
-    color: var(--accent);
-    font-weight: 600;
-    text-align: center;
-}
+        .flatpickr-months {
+            background: var(--primary);
+            color: var(--accent);
+            font-weight: 600;
+            text-align: center;
+        }
 
-.flatpickr-weekdays {
-    background: var(--secondary);
-    border-bottom: 1px solid #e8ded0;
-}
+        .flatpickr-weekdays {
+            background: var(--secondary);
+            border-bottom: 1px solid #e8ded0;
+        }
 
-.flatpickr-weekday {
-    color: var(--accent);
-    font-weight: 600;
-    text-transform: uppercase;
-    font-size: 0.9rem;
-}
+        .flatpickr-weekday {
+            color: var(--accent);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
 
-.flatpickr-day {
-    border-radius: 50%;
-    transition: background 0.3s ease, color 0.3s ease;
-    color: var(--dark);
-    font-weight: 500;
-    line-height: 2.2rem;
-    margin: 0.1rem;
-}
+        .flatpickr-day {
+            border-radius: 50%;
+            transition: background 0.3s ease, color 0.3s ease;
+            color: var(--dark);
+            font-weight: 500;
+            line-height: 2.2rem;
+            margin: 0.1rem;
+        }
 
-.flatpickr-day:hover {
-    background: var(--primary);
-    color: var(--accent);
-    box-shadow: inset 0 0 0 2px var(--accent);
-}
+        .flatpickr-day:hover {
+            background: var(--primary);
+            color: var(--accent);
+            box-shadow: inset 0 0 0 2px var(--accent);
+        }
 
-.flatpickr-day.selected,
-.flatpickr-day.startRange,
-.flatpickr-day.endRange {
-    background: var(--accent);
-    color: white;
-    font-weight: 600;
-}
+        .flatpickr-day.selected,
+        .flatpickr-day.startRange,
+        .flatpickr-day.endRange {
+            background: var(--accent);
+            color: white;
+            font-weight: 600;
+        }
 
-.flatpickr-day.today {
-    border: 1px dashed var(--accent);
-    font-weight: bold;
-    background: var(--secondary);
-}
+        .flatpickr-day.today {
+            border: 1px dashed var(--accent);
+            font-weight: bold;
+            background: var(--secondary);
+        }
 
-.petal {
-      position: fixed;
-      top: -50px;
-      width: 14px;
-      height: 22px;
-      background: radial-gradient(circle at 30% 30%, #ee8d9d, #ff69b4);
-      /* sfumatura rosa */
-      opacity: 0.6;
-      border-radius: 70% 100% 70% 100%;
-      transform: rotate(45deg);
-      animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
-      z-index: -1;
-      pointer-events: none;
-      aspect-ratio: 2/3;
-    }
+        .petal {
+            position: fixed;
+            top: -50px;
+            width: 14px;
+            height: 22px;
+            background: radial-gradient(circle at 30% 30%, #ee8d9d, #ff69b4);
+            /* sfumatura rosa */
+            opacity: 0.6;
+            border-radius: 70% 100% 70% 100%;
+            transform: rotate(45deg);
+            animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
+            z-index: -1;
+            pointer-events: none;
+            aspect-ratio: 2/3;
+        }
 
-    @keyframes fall {
-      to {
-        transform: translateY(110vh) rotate(360deg);
-      }
-    }
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
 
-    @keyframes sway {
+        @keyframes sway {
 
-      0%,
-      100% {
-        margin-left: 0px;
-      }
+            0%,
+            100% {
+                margin-left: 0px;
+            }
 
-      50% {
-        margin-left: 20px;
-      }
-    }
+            50% {
+                margin-left: 20px;
+            }
+        }
 
+        .logo a {
+            text-decoration: none;
+            color: var(--accent);
+            /* o il colore che usi nel tema */
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo a:hover {
+            color: var(--primary);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1.5rem 0;
+            gap: 1.5rem;
+        }
+
+        .month-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--accent);
+        }
+
+        .nav-btn {
+            font-size: 1.5rem;
+            background: none;
+            border: none;
+            color: var(--accent);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .nav-btn:hover {
+            transform: scale(1.2);
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 10px;
+            animation: fadeSlideIn 0.3s ease;
+        }
+
+        .calendar-day {
+            background: white;
+            border-radius: var(--radius);
+            padding: 0.8rem 0.5rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--dark);
+        }
+
+        .calendar-day strong {
+            display: block;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 0.2rem;
+        }
+
+        .intestazione {
+            font-weight: bold;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 0;
+            border-radius: var(--radius);
+        }
+
+        .calendar-day {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid #ddd;
+        }
+
+        .calendar-day.disponibile {
+            background-color: #e0ffe0;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .calendar-day.non-disponibile {
+            background-color: #f2f2f2;
+            color: #aaa;
+        }
+
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 0.5rem;
+            margin-top: 1rem;
+        }
+
+        .calendar-day {
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .calendar-day:hover {
+            background-color: #eee;
+        }
+
+        .calendar-day.selected {
+            background-color: var(--accent);
+            color: white;
+            font-weight: bold;
+        }
+
+
+
+        .date-picker-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+        }
+
+        .date-picker-group label {
+            font-size: 1.1rem;
+            /*color: var(--primary, #333);*/
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .date-display {
+            background: rgba(255, 255, 255, 0.7);
+            border: 2px dashed #ccc;
+            border-radius: var(--radius, 12px);
+            padding: 1rem 1.2rem;
+            font-size: 1.05rem;
+            color: #444;
+            font-weight: 500;
+            backdrop-filter: blur(8px);
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .date-display.selected {
+            border-color: var(--primary, #3366ff);
+            background: rgba(240, 248, 255, 0.8);
+            color: var(--primary, #3366ff);
+        }
+
+        .people-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .guest-entry {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 1.2rem;
+            border: 1px solid #ccc;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+
+        .guest-entry .form-group {
+            margin-bottom: 1rem;
+        }
+
+        .guest-entry label {
+            font-weight: 600;
+            display: block;
+            margin-bottom: 0.4rem;
+            font-size: 0.95rem;
+            color: #333;
+        }
+
+        .guest-entry input {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-size: 0.95rem;
+            background: #fff;
+            transition: border-color 0.3s;
+        }
+
+        .guest-entry input:focus {
+            border-color: var(--primary);
+            outline: none;
+        }
+
+        .remove-btn {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.5rem;
+            background-color: #333;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.7rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 0.8rem;
+        }
+
+        .remove-btn:hover {
+            background-color: #333;
+        }
+
+        .petal {
+            position: fixed;
+            top: -50px;
+            width: 14px;
+            height: 22px;
+            background: radial-gradient(circle at 30% 30%, #ee8d9d, #ff69b4);
+            /* sfumatura rosa */
+            opacity: 0.6;
+            border-radius: 70% 100% 70% 100%;
+            transform: rotate(45deg);
+            animation: fall 10s linear infinite, sway 3s ease-in-out infinite;
+            z-index: -1;
+            pointer-events: none;
+            aspect-ratio: 2/3;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(110vh) rotate(360deg);
+            }
+        }
+
+        @keyframes sway {
+
+            0%,
+            100% {
+                margin-left: 0px;
+            }
+
+            50% {
+                margin-left: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -358,197 +649,367 @@
 </div>-->
 
 
+<!DOCTYPE html>
+<html lang="it">
 
-<body>
+<header>
+    <div class="overlay"></div>
+    <div class="header-content">
+        <h1>Bougainvillea B&B</h1>
+        <p>Il tuo angolo di paradiso</p>
+    </div>
+</header>
 
-    <header>
-        <div class="overlay"></div>
-        <div class="header-content">
-            <h1>Bougainvillea B&B</h1>
-            <p>Il tuo angolo di paradiso</p>
-        </div>
-    </header>
+<nav>
+    <div class="logo">
+        <a href="index.html">🌺 Bougainvillea B&B</a>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="#contatti">Contatti</a>
+    </div>
+</nav>
 
-    <nav>
-        <div class="logo">🌺Bougainvillea B&B</div>
-        <div class="nav-links">
-            <a href="index.html">Home</a>
-            <a href="index.html#contatti">Contatti</a>
-        </div>
-    </nav>
+<section id="calendario-mensile" style="max-width: 720px; margin: 4rem auto; text-align: center;">
+    <h2 style="font-family: 'Playfair Display', serif; color: var(--accent); font-size: 2.1rem;">Date Disponibili</h2>
+    <div class="calendar-header">
+        <button id="prev-month" class="btn">&larr;</button>
+        <h3 id="month-title"></h3>
+        <button id="next-month" class="btn">&rarr;</button>
+    </div>
+    <div class="calendar-grid" id="calendar-grid"></div>
+</section>
 
-    <main>
-        <section id="prenota">
-            <h2>Prenota Ora</h2>
-            <form id="booking-form">
-                <div class="form-group">
-                    <label for="name">Nome Completo</label>
-                    <input type="text" id="name" required>
+<main>
+    <section id="prenota">
+        <h2>Dati per la Registrazione</h2>
+        <form id="booking-form">
+            <div class="form-group">
+                <label for="name">Nome Completo</label>
+                <input type="text" id="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+
+            <div class="form-group date-picker-group">
+                <label for="date-picker">📅 Date Soggiorno</label>
+                <!-- <input type="text" id="date-picker" class="form-control" placeholder="Seleziona le date" /> -->
+                <div class="date-display" id="selected-dates">Nessuna data selezionata</div>
+            </div>
+
+
+
+            <div class="guest-section">
+                <div class="guest-header">
+                    <h3>🧑‍🤝‍🧑 Ospiti</h3>
+                    <p id="guest-counter">Numero di ospiti: <span class="guest-count">0</span></p>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type="email" id="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="date-range">Date Soggiorno</label>
-                    <input type="text" id="date-range" placeholder="Seleziona date" required>
-                </div>
+                <button type="button" class="btn add-guest-btn" id="add-person">+ Aggiungi Ospite</button>
+                <div id="people-container" class="people-list"></div>
+            </div>
 
-                <button type="button" class="btn" id="add-person">+ Aggiungi Persona</button>
-                <div id="people-container"></div>
 
-                <div class="form-group">
-                    <label for="message">Messaggio</label>
-                    <textarea id="message" rows="4"></textarea>
-                </div>
+            <div class="form-group">
+                <label for="message">Messaggio (opzionale)</label>
+                <textarea id="message" rows="4"></textarea>
+            </div>
+            <div style="text-align:center;">
+                <button type="submit" class="btn">Procedi al Pagamento</button>
+            </div>
+        </form>
+    </section>
 
-                <div style="text-align:center;">
-                    <button type="submit" class="btn">Procedi al Pagamento</button>
-                </div>
-            </form>
-        </section>
+    <section class="preview">
+        <h2>Anteprima Ospiti</h2>
+        <ul id="preview-list"></ul>
+    </section>
+</main>
 
-        <section class="preview">
-            <h2>Anteprima Ospiti</h2>
-            <ul id="preview-list"></ul>
-        </section>
-    </main>
+<footer id="contatti">
+    <p>&copy; 2025 Bougainvillea B&B - Tutti i diritti riservati</p>
+    <p><a href="index.html" style="color: var(--accent); text-decoration: underline;">Torna alla Home</a></p>
+</footer>
 
-    <footer id="contatti">
-        <p>© 2025 Bougainvillea B&B - Tutti i diritti riservati</p>
-        <p><a href="index.html" style="color: var(--accent); text-decoration: underline;">Torna alla Home</a>
-        </p>
-    </footer>
+<script>
+    const prezzi = {
+        "2025-05-01": 80,
+        "2025-05-02": 80,
+        "2025-05-03": 80,
+        "2025-05-04": 80,
+        "2025-05-04": 80,
+        "2025-05-14": 90,
+        "2025-06-15": 100,
+        "2025-07-20": 110,
+        "2025-12-25": 130
+    };
+    const mesi = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
+    const giorniSettimana = ["Lun", "Mar", "Mer", "Gio", "Ven", "Sab", "Dom"];
+    const calendarGrid = document.getElementById("calendar-grid");
+    const monthTitle = document.getElementById("month-title");
+    let meseCorrente = new Date().getMonth();
+    let annoCorrente = 2025;
 
-    <!-- Flatpickr JS + Traduzione -->
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/it.js"></script>
+    let checkinDate = null;
+    let checkoutDate = null;
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            fetch('prenotazioni.json')
-                .then(response => response.json())
-                .then(data => {
-                    flatpickr("#date-range", {
-                        mode: "range",
-                        minDate: "today",
-                        dateFormat: "d-m-Y",
-                        locale: "it",
-                        disable: data.datePrenotate || [],
-                        onChange: function (selectedDates, dateStr, instance) {
-                            const [checkin, checkout] = selectedDates;
-                            console.log("Check-in:", checkin);
-                            console.log("Check-out:", checkout);
-                        }
-                    });
-                })
-                .catch(error => {
-                    console.error("Errore nel caricamento delle date prenotate:", error);
+    function resetSelection() {
+        document.querySelectorAll(".calendar-day.selected").forEach(el => el.classList.remove("selected"));
+        checkinDate = null;
+        checkoutDate = null;
+        document.getElementById('selected-dates').textContent = "Seleziona le date dal calendario sopra";
+    }
 
-                    // Fallback: calendario normale senza disabilitazioni
-                    flatpickr("#date-range", {
-                        mode: "range",
-                        minDate: "today",
-                        dateFormat: "d-m-Y",
-                        locale: "it"
-                    });
+    function formatDateItalian(date) {
+        return date.toLocaleDateString("it-IT", {
+            day: '2-digit',
+            month: '2-digit',
+            year: 'numeric'
+        });
+    }
+
+    function generaCalendario(mese, anno) {
+        calendarGrid.innerHTML = "";
+        monthTitle.textContent = `${mesi[mese]} ${anno}`;
+        giorniSettimana.forEach(g => {
+            const div = document.createElement("div");
+            div.className = "intestazione";
+            div.textContent = g;
+            calendarGrid.appendChild(div);
+        });
+
+        const primoGiorno = new Date(anno, mese, 1).getDay();
+        const giorniNelMese = new Date(anno, mese + 1, 0).getDate();
+        const offset = primoGiorno === 0 ? 6 : primoGiorno - 1;
+
+        for (let i = 0; i < offset; i++) {
+            const empty = document.createElement("div");
+            calendarGrid.appendChild(empty);
+        }
+
+        for (let g = 1; g <= giorniNelMese; g++) {
+            const giornoStr = g.toString().padStart(2, '0');
+            const meseStr = (mese + 1).toString().padStart(2, '0');
+            const dataKey = `${anno}-${meseStr}-${giornoStr}`;
+            const cell = document.createElement("div");
+            cell.className = "calendar-day";
+
+            if (prezzi[dataKey]) {
+                cell.classList.add("disponibile");
+                cell.innerHTML = `<strong>${giornoStr}</strong> €${prezzi[dataKey]}`;
+                cell.addEventListener("click", () => {
+                    const clickedDate = new Date(dataKey);
+                    if (!checkinDate || (checkinDate && checkoutDate)) {
+                        resetSelection();
+                        checkinDate = clickedDate;
+                        cell.classList.add("selected");
+                    } else if (clickedDate > checkinDate) {
+                        checkoutDate = clickedDate;
+                        document.querySelectorAll(".calendar-day").forEach(dayCell => {
+                            const dayMatch = dayCell.querySelector("strong")?.textContent;
+                            if (!dayMatch) return;
+                            const dateStr = `${anno}-${(mese + 1).toString().padStart(2, '0')}-${dayMatch.padStart(2, '0')}`;
+                            const dObj = new Date(dateStr);
+                            if (dObj >= checkinDate && dObj <= checkoutDate && dayCell.classList.contains("disponibile")) {
+                                dayCell.classList.add("selected");
+                            }
+                        });
+                        document.getElementById('selected-dates').textContent =
+                            `Dal ${formatDateItalian(checkinDate)} al ${formatDateItalian(checkoutDate)}`;
+                    } else {
+                        resetSelection();
+                    }
                 });
-        });
-
-
-
-        const peopleContainer = document.getElementById('people-container');
-        const previewList = document.getElementById('preview-list');
-
-        function updatePreview() {
-            previewList.innerHTML = '';
-            document.querySelectorAll('.person-box').forEach(box => {
-                const firstName = box.querySelector('.first-name').value;
-                const lastName = box.querySelector('.last-name').value;
-                const birthDate = box.querySelector('.birth-date').value;
-                if (firstName && lastName && birthDate) {
-                    const li = document.createElement('li');
-                    li.textContent = `${firstName} ${lastName}, nato il ${birthDate}`;
-                    previewList.appendChild(li);
-                }
-            });
+            } else {
+                cell.classList.add("non-disponibile");
+                cell.innerHTML = `<strong>${giornoStr}</strong> —`;
+            }
+            calendarGrid.appendChild(cell);
         }
+    }
 
+    document.getElementById("prev-month").addEventListener("click", () => {
+        if (--meseCorrente < 0) { meseCorrente = 11; annoCorrente--; }
+        generaCalendario(meseCorrente, annoCorrente);
+    });
 
-        function addPerson() {
-            const div = document.createElement('div');
-            div.className = 'person-box';
-            div.innerHTML = `
-                <input type="text" class="first-name" placeholder="Nome" required>
-                <input type="text" class="last-name" placeholder="Cognome" required>
-                <input type="date" class="birth-date" required>
-                <button type="button" class="remove-person-btn" onclick="this.parentElement.remove(); updatePreview();">&times;</button>
-            `;
-            peopleContainer.appendChild(div);
-            div.querySelectorAll('input').forEach(input => input.addEventListener('input', updatePreview));
-            updatePreview();
-        }
+    document.getElementById("next-month").addEventListener("click", () => {
+        if (++meseCorrente > 11) { meseCorrente = 0; annoCorrente++; }
+        generaCalendario(meseCorrente, annoCorrente);
+    });
 
-        document.getElementById('add-person').addEventListener('click', addPerson);
+    generaCalendario(meseCorrente, annoCorrente);
 
-        document.getElementById('booking-form').addEventListener('submit', e => {
-            e.preventDefault();
-            alert('Prenotazione salvata! Ora verrai indirizzato al pagamento.');
-            window.location.href = 'pagamento.html';
-        });
+    /*document.addEventListener('DOMContentLoaded', () => {
+         const guestCounter = document.getElementById('guest-counter');
+         const previewList = document.getElementById('preview-list');
+         const peopleContainer = document.getElementById('people-container');
+ 
+         function updateGuestCount() {
+             guestCounter.textContent = `Numero di ospiti: ${document.querySelectorAll('.person-box').length}`;
+         }
+ 
+         function updatePreview() {
+             previewList.innerHTML = '';
+             document.querySelectorAll('.person-box').forEach((box, i) => {
+                 const first = box.querySelector('.first-name').value;
+                 const last = box.querySelector('.last-name').value;
+                 const birth = box.querySelector('.birth-date').value;
+                 if (first && last && birth) {
+                     const li = document.createElement('li');
+                     li.textContent = `Ospite ${i + 1}: ${first} ${last}, nato il ${birth}`;
+                     previewList.appendChild(li);
+                 }
+             });
+         }
+ 
+         document.getElementById('add-person').addEventListener('click', () => {
+             const div = document.createElement('div');
+             div.className = 'person-box';
+             div.innerHTML = `
+                 <input type="text" class="first-name" placeholder="Nome" required>
+                 <input type="text" class="last-name" placeholder="Cognome" required>
+                 <input type="date" class="birth-date" required>
+                 <button type="button" class="remove-person-btn" title="Rimuovi ospite">&times;</button>
+             `;
+             div.querySelector('.remove-person-btn').addEventListener('click', () => {
+                 div.remove();
+                 updatePreview();
+                 updateGuestCount();
+             });
+             div.querySelectorAll('input').forEach(input => input.addEventListener('input', updatePreview));
+             peopleContainer.appendChild(div);
+             updatePreview();
+             updateGuestCount();
+         });*/
 
-        src = "https://cdn.jsdelivr.net/npm/flatpickr" </script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/it.js"></script>
+    document.getElementById('booking-form').addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (!checkinDate || !checkoutDate) return alert('Seleziona un intervallo di date valido.');
+        const checkin = checkinDate.toISOString().split('T')[0];
+        const checkout = checkoutDate.toISOString().split('T')[0];
 
-<script> 
-    flatpickr("#date-range", {
+        localStorage.setItem('name', document.getElementById('name').value);
+        localStorage.setItem('email', document.getElementById('email').value);
+        localStorage.setItem('checkin', checkin);
+        localStorage.setItem('checkout', checkout);
+        localStorage.setItem('message', document.getElementById('message').value);
+        localStorage.setItem('guests', document.querySelectorAll('.person-box').length);
+        alert('Prenotazione salvata! Ora verrai indirizzato al pagamento.');
+        window.location.href = 'pagamento.html';
+    });
+    ;
+</script>
+
+<script>
+    flatpickr("#date-picker", {
         mode: "range",
-        minDate: "today",
-        dateFormat: "d-m-Y",
-        locale: "it",
-        disable: data.datePrenotate || [],
-        animate: true
+        dateFormat: "d/m/Y",
+        onChange: function (selectedDates, dateStr, instance) {
+            const display = document.getElementById("selected-dates");
+            if (selectedDates.length === 2) {
+                const from = selectedDates[0].toLocaleDateString('it-IT');
+                const to = selectedDates[1].toLocaleDateString('it-IT');
+                display.textContent = `Dal ${from} al ${to}`;
+            } else {
+                display.textContent = "Seleziona l'intervallo di date";
+            }
+        }
     });
 </script>
 
 <script>
+    const counter = document.querySelector('.guest-count');
+    const container = document.getElementById('people-container');
+    const button = document.getElementById('add-person');
+
+    let guestCount = 0;
+
+    button.addEventListener('click', () => {
+        guestCount++;
+        updateGuestCounter();
+
+        const guestDiv = document.createElement('div');
+        guestDiv.classList.add('guest-entry');
+        guestDiv.innerHTML = `
+        <div class="form-group">
+            <label>Nome</label>
+            <input type="text" name="guest-${guestCount}-nome" placeholder="Nome">
+        </div>
+        <div class="form-group">
+            <label>Cognome</label>
+            <input type="text" name="guest-${guestCount}-cognome" placeholder="Cognome">
+        </div>
+        <div class="form-group">
+            <label>Età</label>
+            <input type="number" name="guest-${guestCount}-eta" placeholder="Età">
+        </div>
+        <div class="form-group">
+            <label>Email</label>
+            <input type="email" name="guest-${guestCount}-email" placeholder="Email">
+        </div>
+        <div class="form-group">
+            <label>Numero di Telefono</label>
+            <input type="tel" name="guest-${guestCount}-telefono" placeholder="Telefono">
+        </div>
+        <button type="button" class="remove-btn">X</button>
+    `;
+
+        guestDiv.querySelector('.remove-btn').addEventListener('click', () => {
+            container.removeChild(guestDiv);
+            guestCount--;
+            updateGuestCounter();
+        });
+
+        container.appendChild(guestDiv);
+    });
+
+    function updateGuestCounter() {
+        counter.textContent = guestCount;
+    }
+</script>
+
+<!--Soggiorno upgrade-->
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
+<script>
     function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('active');
+        document.getElementById('navLinks').classList.toggle('active');
     }
     for (let i = 0; i < 20; i++) {
-      const petal = document.createElement('div');
-      petal.classList.add('petal');
-      petal.style.left = `${Math.random() * 100}vw`;
-      petal.style.background = `hsl(${Math.random() * 20 + 340}, 70%, 80%)`;
-      petal.style.width = `${10 + Math.random() * 15}px`;
-      petal.style.height = `${10 + Math.random() * 15}px`;
-      petal.style.animationDuration = `${5 + Math.random() * 7}s`;
-      petal.style.animationDelay = `${Math.random() * 5}s`;
-      document.body.appendChild(petal);
+        const petal = document.createElement('div');
+        petal.classList.add('petal');
+        petal.style.left = `${Math.random() * 100}vw`;
+        petal.style.background = `hsl(${Math.random() * 20 + 340}, 70%, 80%)`;
+        petal.style.width = `${10 + Math.random() * 15}px`;
+        petal.style.height = `${10 + Math.random() * 15}px`;
+        petal.style.animationDuration = `${5 + Math.random() * 7}s`;
+        petal.style.animationDelay = `${Math.random() * 5}s`;
+        document.body.appendChild(petal);
     }
-  </script>
-  
+</script>
 
 <script>
     // Crea più petali con posizione orizzontale casuale
     const numberOfPetals = 20;
-  
+
     for (let i = 0; i < numberOfPetals; i++) {
-      const petal = document.createElement("div");
-      petal.classList.add("petal");
-  
-      // Posizione orizzontale random
-      petal.style.left = Math.random() * 100 + "vw";
-  
-      // Ritardo casuale per l'animazione
-      petal.style.animationDelay = Math.random() * 10 + "s";
-  
-      // Variazione leggera della durata
-      petal.style.animationDuration = (8 + Math.random() * 5) + "s";
-  
-      document.body.appendChild(petal);
+        const petal = document.createElement("div");
+        petal.classList.add("petal");
+
+        // Posizione orizzontale random
+        petal.style.left = Math.random() * 100 + "vw";
+
+        // Ritardo casuale per l'animazione
+        petal.style.animationDelay = Math.random() * 10 + "s";
+
+        // Variazione leggera della durata
+        petal.style.animationDuration = (8 + Math.random() * 5) + "s";
+
+        document.body.appendChild(petal);
     }
-  </script>
+</script>
 
 
 </body>

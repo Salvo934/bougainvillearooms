@@ -383,6 +383,38 @@
         font-size: 1.1rem;
       }
     }
+
+    .calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem 0;
+  gap: 1.5rem;
+}
+
+.month-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: var(--accent);
+}
+
+.nav-btn {
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: var(--accent);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.nav-btn:hover {
+  transform: scale(1.2);
+}
+
+
+
+
+
   </style>
 </head>
 
@@ -475,6 +507,22 @@
   </div>
 </section>
 
+
+<!--</section>
+  <div style="max-height: 500px; overflow-y: auto; border-radius: var(--radius); box-shadow: var(--shadow); background: white;">
+    <table style="width: 100%; border-collapse: collapse; font-size: 0.95rem;">
+      <thead style="position: sticky; top: 0; background: var(--primary); color: white;">
+        <tr>
+          <th style="padding: 0.8rem;">Data</th>
+          <th style="padding: 0.8rem;">Giorno</th>
+          <th style="padding: 0.8rem;">Prezzo</th>
+        </tr>
+      </thead>
+      <tbody id="lista-date"></tbody>
+    </table>
+  </div>
+</section>-->
+
 <section id="contatti">
   <h2>Contattaci</h2>
   <p>Email: <strong>info@bougainvillea-bb.it</strong><br>Telefono: <strong>+39 123 456 7890</strong></p>
@@ -522,7 +570,3 @@
   }
 </script>
 
-
-</body>
-
-</html>
