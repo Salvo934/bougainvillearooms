@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bougainvillea B&B - Charme Mediterraneo</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@400;600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <style>
     :root {
@@ -96,7 +98,7 @@
       font-family: 'Playfair Display', serif;
       font-size: 3.5rem;
       margin-bottom: 1rem;
-      text-shadow: 2px 2px 8px rgba(0,0,0,0.4);
+      text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.4);
     }
 
     header p {
@@ -174,13 +176,27 @@
     }
 
     @keyframes fadeIn {
-      from {opacity: 0; transform: scale(0.95);}
-      to {opacity: 1; transform: scale(1);}
+      from {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
     }
 
     @keyframes fadeUp {
-      from {opacity: 0; transform: translateY(30px);}
-      to {opacity: 1; transform: translateY(0);}
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     @media (max-width: 768px) {
@@ -208,29 +224,35 @@
         font-size: 2.5rem;
       }
     }
+
     body {
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      background: #fffafc; /* sfondo chiaro */
+      background: #fffafc;
+      /* sfondo chiaro */
     }
 
     .petal {
-            position: fixed;
-            top: -50px;
-            width: 20px;
-            height: 20px;
-            background: pink;
-            opacity: 0.7;
-            border-radius: 50%;
-            animation: fall 10s linear infinite;
-        }
+      position: fixed;
+      top: -50px;
+      width: 20px;
+      height: 20px;
+      background: rgb(240, 107, 129);
+      opacity: 0.5;
+      border-radius: 50%;
+      animation: fall 10s linear infinite;
+      z-index: -1;
+      /* dietro al contenuto */
+      pointer-events: none;
+      /* non blocca interazioni */
+    }
 
-        @keyframes fall {
-            to {
-                transform: translateY(110vh) rotate(360deg);
-            }
-        }
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(360deg);
+      }
+    }
   </style>
 </head>
 
@@ -247,56 +269,77 @@
       <a href="prenota.html">Prenota</a>
     </div>
   </nav>
- 
+
 </body>
 
-  <header>
-    <h1>Benvenuti al Bougainvillea B&B</h1>
-    <p>Eleganza Mediterranea e Ospitalità senza Tempo</p>
-    <a href="prenota.html" class="btn-primary">Prenota Ora</a>
-  </header>
+<header>
+  <h1>Benvenuti al Bougainvillea B&B</h1>
+  <p>Eleganza Mediterranea e Ospitalità senza Tempo</p>
+  <a href="prenota.html" class="btn-primary">Prenota Ora</a>
+</header>
 
-  <section id="servizi">
-    <h2>Servizi Esclusivi</h2>
-    <p>Colazione gourmet, piscina panoramica, Wi-Fi ultraveloce, escursioni guidate tra natura e cultura, relax garantito sotto il sole mediterraneo.</p>
-  </section>
+<section id="servizi">
+  <h2>Servizi Esclusivi</h2>
+  <p>Colazione gourmet, piscina panoramica, Wi-Fi ultraveloce, escursioni guidate tra natura e cultura, relax garantito
+    sotto il sole mediterraneo.</p>
+</section>
 
-  <section id="galleria">
-    <h2>Galleria Fotografica</h2>
-    <div class="gallery">
-      <img src="https://via.placeholder.com/400x300" alt="Camera Bougainvillea">
-      <img src="https://via.placeholder.com/400x300" alt="Piscina Panoramica">
-      <img src="https://via.placeholder.com/400x300" alt="Colazione all'Aperto">
-      <img src="https://via.placeholder.com/400x300" alt="Zona Relax">
-    </div>
-  </section>
+<section id="galleria">
+  <h2>Galleria Fotografica</h2>
+  <div class="gallery">
+    <img src="https://via.placeholder.com/400x300" alt="Camera Bougainvillea">
+    <img src="https://via.placeholder.com/400x300" alt="Piscina Panoramica">
+    <img src="https://via.placeholder.com/400x300" alt="Colazione all'Aperto">
+    <img src="https://via.placeholder.com/400x300" alt="Zona Relax">
+  </div>
+</section>
 
-  <section id="contatti">
-    <h2>Contattaci</h2>
-    <p>Email: <strong>info@bougainvillea-bb.it</strong><br>Telefono: <strong>+39 123 456 7890</strong></p>
-  </section>
+<section id="contatti">
+  <h2>Contattaci</h2>
+  <p>Email: <strong>info@bougainvillea-bb.it</strong><br>Telefono: <strong>+39 123 456 7890</strong></p>
+</section>
 
-  <footer>
-    <p>&copy; 2025 Bougainvillea B&B | Tutti i diritti riservati | Made by Salvatore Bonavita</p>
-  </footer>
+<footer>
+  <p>&copy; 2025 Bougainvillea B&B | Tutti i diritti riservati | Made by Salvatore Bonavita</p>
+</footer>
 
-  <script>
-    function toggleMenu() {
-      document.getElementById('navLinks').classList.toggle('active');
-    }
-    for (let i = 0; i < 20; i++) {
-        const petal = document.createElement('div');
-        petal.classList.add('petal');
-        petal.style.left = `${Math.random() * 100}vw`;
-        petal.style.background = `hsl(${Math.random() * 20 + 340}, 70%, 80%)`;
-        petal.style.width = `${10 + Math.random() * 15}px`;
-        petal.style.height = `${10 + Math.random() * 15}px`;
-        petal.style.animationDuration = `${5 + Math.random() * 7}s`;
-        petal.style.animationDelay = `${Math.random() * 5}s`;
-        document.body.appendChild(petal);
-    }
-  </script>
-    
+<!--<script>
+  function toggleMenu() {
+    document.getElementById('navLinks').classList.toggle('active');
+  }
+  for (let i = 0; i < 20; i++) {
+    const petal = document.createElement('div');
+    petal.classList.add('petal');
+    petal.style.left = `${Math.random() * 100}vw`;
+    petal.style.background = `hsl(${Math.random() * 20 + 340}, 70%, 80%)`;
+    petal.style.width = `${10 + Math.random() * 15}px`;
+    petal.style.height = `${10 + Math.random() * 15}px`;
+    petal.style.animationDuration = `${5 + Math.random() * 7}s`;
+    petal.style.animationDelay = `${Math.random() * 5}s`;
+    document.body.appendChild(petal);
+  }
+</script>-->
+<script>
+  // Crea più petali con posizione orizzontale casuale
+  const numberOfPetals = 20;
+
+  for (let i = 0; i < numberOfPetals; i++) {
+    const petal = document.createElement("div");
+    petal.classList.add("petal");
+
+    // Posizione orizzontale random
+    petal.style.left = Math.random() * 100 + "vw";
+
+    // Ritardo casuale per l'animazione
+    petal.style.animationDelay = Math.random() * 10 + "s";
+
+    // Variazione leggera della durata
+    petal.style.animationDuration = (8 + Math.random() * 5) + "s";
+
+    document.body.appendChild(petal);
+  }
+</script>
+
 
 </body>
 
